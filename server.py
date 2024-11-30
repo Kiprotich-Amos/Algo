@@ -12,11 +12,11 @@ import matplotlib.pyplot as plt
 from daemon import DaemonContext
 import configparser
 
-# Global cache and settings
+"""Global cache and settings"""
 file_cache = {}
 REREAD_ON_QUERY = False
 
-# Logging configuration
+"""Logging configuration"""
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def create_server(host, port):
@@ -68,7 +68,7 @@ def handle_client_connection(client_socket, client_address, ssl_enabled, linuxpa
             linuxpath, search_string = pickle.loads(data)
             logging.debug(f"Received request: Searching for '{search_string}' in {linuxpath}")
             
-            # Simulate a benchmark of search algorithms
+            """Simulate a benchmark of search algorithms"""
             execution_time = benchmark_search(linuxpath, search_string)
             pdf_path = generate_pdf_report(execution_time)
 
@@ -148,5 +148,5 @@ if __name__ == "__main__":
         logging.error("Error: linuxpath is missing from configuration.")
         sys.exit(1)
 
-    # Start the server as a daemon
+    """Start the server as a daemon"""
     run_daemon(host, port, linuxpath, ssl_enabled)

@@ -30,7 +30,7 @@ def client(host, port, linuxpath, ssl_enabled):
     message = pickle.dumps(data)
     client_socket.sendall(message)
 
-    # Receive and print the server's response
+    """Receive and print the server's response"""
     response = client_socket.recv(1024)
     print("Server response:", response.decode('utf-8'))
 
@@ -49,5 +49,5 @@ if __name__ == "__main__":
         print("Error: linuxpath is missing from configuration.")
         sys.exit(1)
 
-    # Run the client with SSL support
+    """Run the client with SSL support"""
     client(host, port, linuxpath, ssl_enabled)
